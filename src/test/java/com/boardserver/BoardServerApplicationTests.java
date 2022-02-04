@@ -1,6 +1,7 @@
 package com.boardserver;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,6 @@ class BoardServerApplicationTests {
 		member.setRegistDate(new Date());
 		member.setRole("TEST");
 		member.setAvailable(true);
-		
 		memberRepo.save(member);
 		
 		Board board = new Board();
@@ -41,7 +41,25 @@ class BoardServerApplicationTests {
 		board.setCount(0L);
 		board.setMember(member);
 		boardRepo.save(board);
+		
+		Board board2 = new Board();
+		board2.setTitle("SECOND");
+		board2.setContent("FOR TEST");
+		board2.setCreateDate(new Date());
+		board2.setCount(0L);
+		board2.setMember(member);
+		boardRepo.save(board2);
 	}
 	
+	@Test
+	void findByTest() {
+		Member mem = memberRepo.findById("TestAccount1").get();
+		
+		List<Board> boardList = boardRepo.findByMember(mem);
+		
+		for(Board board : boardList) {
+			System.out.println(board.toString());
+		}
+	}
 
 }

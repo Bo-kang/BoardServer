@@ -10,7 +10,7 @@ public class BoardServerApplication {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(BoardServerApplication.class);
 		
-		app.setWebApplicationType(WebApplicationType.NONE);
+		app.setWebApplicationType(WebApplicationType.SERVLET);
 		app.run(args);
 		
 	}
