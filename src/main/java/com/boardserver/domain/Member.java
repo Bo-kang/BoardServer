@@ -1,15 +1,11 @@
 package com.boardserver.domain;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,21 +13,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
 @Getter
 @Setter
 @ToString
 @Entity
-public class Board {
-	@Id @GeneratedValue
-	private Long seq;
-	private String title;
-	// private String writer;
-	private String content;
+public class Member {
+	@Id
+	@Column(name="MEMBER_ID")
+	private String id;
+	private String password;
+	private String name;
+	private String role;
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date createDate;
-	private Long count;
-
-	@ManyToOne
-	@JoinColumn(name="MEMBER_ID")
-	private Member member;
+	private Date registDate;
+	private boolean available;
 }
