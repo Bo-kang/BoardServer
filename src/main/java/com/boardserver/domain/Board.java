@@ -19,7 +19,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString (exclude = "member")
 @Entity
 public class Board {
 	@Id @GeneratedValue
@@ -32,6 +32,6 @@ public class Board {
 	private Long count;
 
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID")
+	@JoinColumn(name = "MEMBER_ID", nullable = false)
 	private Member member;
 }
