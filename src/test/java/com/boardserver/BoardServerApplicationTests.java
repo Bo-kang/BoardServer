@@ -37,7 +37,7 @@ class BoardServerApplicationTests {
 		Board board = new Board();
 		board.setTitle("FIRST");
 		board.setContent("FOR TEST");
-		board.setCreateDate(new Date());
+		//board.setCreateDate(new Date());
 		board.setCount(0L);
 		board.setMember(member);
 		boardRepo.save(board);
@@ -45,7 +45,7 @@ class BoardServerApplicationTests {
 		Board board2 = new Board();
 		board2.setTitle("SECOND");
 		board2.setContent("FOR TEST");
-		board2.setCreateDate(new Date());
+		//board2.setCreateDate(new Date());
 		board2.setCount(0L);
 		board2.setMember(member);
 		boardRepo.save(board2);

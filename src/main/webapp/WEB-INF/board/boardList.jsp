@@ -22,12 +22,13 @@
 <c:forEach var = "board" items = "${boardList}">
 <tr>
 	<td>${board.seq}</td>
-	<td align = "left"><a href = "getBoard?seq=${board.seq}">${board.title}</a></td>
+	<td align = "left"><a href = "board?seq=${board.seq}">${board.title}</a></td>
 	<td>${board.member.id }</td>
 	<td><fmt:formatDate value="${board.createDate }" pattern = "yyyy-MM-dd"></fmt:formatDate></td>
 	<td>${board.count}</td>
 </tr>
 </c:forEach>
 </table>
+<a href = "insertBoard" > Write Board</a>
 </body>
-</html>
+</html> 
