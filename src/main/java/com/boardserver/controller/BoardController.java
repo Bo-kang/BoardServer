@@ -58,4 +58,10 @@ public class BoardController{
 		boardService.updateBoard(board);
 		return "redirect:boardList";
 	}
+	
+	@GetMapping("deleteBoard")
+	public String deleteBoard(Model model, Board board) {
+		boardService.deleteBoard(board);
+		return "redirect:boardList";
+	}
 };
