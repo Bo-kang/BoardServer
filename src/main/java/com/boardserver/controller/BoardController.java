@@ -64,4 +64,9 @@ public class BoardController{
 		boardService.deleteBoard(board);
 		return "redirect:boardList";
 	}
+	
+	@GetMapping("/hello")
+	public void hello(Model model) {
+		model.addAttribute("greeting", "Hello");
+	}
 };
