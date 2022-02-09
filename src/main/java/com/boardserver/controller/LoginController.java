@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.boardserver.domain.Board;
 import com.boardserver.domain.Member;
@@ -40,5 +41,10 @@ public class LoginController {
 		} else {
 			return "redirect:login";
 		}
+	}
+	@GetMapping("/logout")
+	public String logout(SessionStatus status) {
+		status.setComplete();
+		return "redirect:index.html";
 	}
 }

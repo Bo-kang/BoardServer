@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.boardserver.domain.Board;
 import com.boardserver.domain.Member;
@@ -17,15 +19,18 @@ import com.boardserver.persistence.BoardRepository;
 import com.boardserver.persistence.MemberRepository;
 import com.boardserver.service.BoardService;
 
+@SessionAttributes("member")
 @Controller
 public class BoardController{
 	@Autowired
 	private BoardService boardService;
 	
 	@GetMapping("/boardList")
-	public String getBoardList(Model model, Board board) {
+	public String getBoardList(@ModelAttribute("member") Member member , Model model, Board board) {
 		
-		//Member mem = memRepo.findById("TestAccount1").get();
+		if(member.getId() == null) {
+			return "redirect:login";
+		}
 		
 		List<Board> boardList = boardService.getBoardList(board);
 		
@@ -65,8 +70,8 @@ public class BoardController{
 		return "redirect:boardList";
 	}
 	
-	@GetMapping("/hello")
-	public void hello(Model model) {
-		model.addAttribute("greeting", "Hello");
+	@ModelAttribute("member")
+	public Member setMember() {
+		return new Member();
 	}
 };

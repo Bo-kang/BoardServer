@@ -37,7 +37,7 @@
 </form>
 <hr>
 <a th:href = "@{/insertBoard}">글 등록</a>
-<a th:if="${session['member'].role == 'ADMIN'}" th:href = "deleteBoard?seq=${board.seq}"> 글 삭제 </a>
+<a th:if="${session['member'].role == 'ADMIN'}" th:href = "@{/deleteBoard(seq=${board.seq})}"> 글 삭제 </a>
 <a th:href = "@{/boardList}">글 목록</a>
 </body>
 </html>

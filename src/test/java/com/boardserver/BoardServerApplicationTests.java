@@ -26,11 +26,11 @@ class BoardServerApplicationTests {
 	void saveTest() {
 		
 		Member member = new Member();
-		member.setId("TestAccount1");
+		member.setId("TestAccount2");
 		member.setName("Admin");
 		member.setPassword("admin1");
 		member.setRegistDate(new Date());
-		member.setRole("TEST");
+		member.setRole("ADMIN");
 		member.setAvailable(true);
 		memberRepo.save(member);
 		
@@ -62,4 +62,5 @@ class BoardServerApplicationTests {
 		}
 	}
 
+	
 }
